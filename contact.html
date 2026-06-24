@@ -191,7 +191,7 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Signature Grounds, LLC · Augusta, GA</p>
+      <p class="footer-copy">© <span id="copyright-year">2026</span> Signature Grounds, LLC · Augusta, GA</p>
       <div class="footer-badges">
         <a href="http://www.bbb.org" target="_blank"><img src="images/accreditations/bbb-logo.png" alt="BBB Accredited Business"></a>
         <a href="https://www.landscapeprofessionals.org" target="_blank"><img src="images/accreditations/landscape-industry-certified-logo.png" alt="Landscape Industry Certified"></a>
@@ -201,26 +201,8 @@
     </div>
   </footer>
 
+  <script src="js/main.js"></script>
   <script>
-    // ── Mobile nav ──
-    const toggle = document.querySelector('.nav-mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', () => {
-        const open = navLinks.style.display === 'flex';
-        navLinks.style.display = open ? 'none' : 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '68px';
-        navLinks.style.left = '0';
-        navLinks.style.right = '0';
-        navLinks.style.background = 'var(--forest)';
-        navLinks.style.padding = '16px 24px 24px';
-        navLinks.style.gap = '16px';
-        toggle.setAttribute('aria-expanded', String(!open));
-      });
-    }
-
     // ── Form validation ──
     const form = document.getElementById('contact-form');
     const successMsg = document.getElementById('form-success');
