@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Signature Grounds LLC to request a free estimate. Serving Augusta, Evans, Martinez, and Appling, GA. Call 706-833-7150 or send us a message." />
+  <title>Contact — Signature Grounds, LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:     #0F1A0A;
+      --green:      #2D5016;
+      --sage:       #8BAF6A;
+      --pale:       #C9D4B8;
+      --warm-white: #F7F5F0;
+      --bark:       #3D3128;
+      --muted:      #6B6057;
+      --border:     #DDD8CF;
+      --surface:    #EFF2E8;
+      --error:      #9B2C2C;
+      --error-bg:   #FFF5F5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-white);
+      color: var(--bark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--forest);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--warm-white);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--pale);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--warm-white); }
+    .nav-links a[aria-current="page"] { color: var(--warm-white); }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      padding: 9px 20px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--pale); }
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-mobile-toggle span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--warm-white); margin: 5px 0;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--forest);
+      padding: 56px 48px 60px;
+    }
+    .page-header-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      color: var(--warm-white);
+      line-height: 1.15;
+      max-width: 560px;
+      margin-bottom: 16px;
+    }
+    .page-header p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--pale);
+      max-width: 480px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 0;
+      min-height: 600px;
+    }
+
+    /* ── FORM SIDE ── */
+    .form-side {
+      padding: 64px 56px 80px 48px;
+      border-right: 1px solid var(--border);
+    }
+
+    .form-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      color: var(--bark);
+      line-height: 1.25;
+      margin-bottom: 40px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 24px;
+    }
+    .field.full { grid-column: span 2; }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bark);
+      letter-spacing: 0.02em;
+    }
+    label .required {
+      color: var(--sage);
+      margin-left: 2px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--bark);
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 11px 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(139,175,106,0.18);
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.7; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6057' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    .field-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: -4px;
+    }
+
+    .field-error {
+      font-size: 12px;
+      color: var(--error);
+      display: none;
+    }
+    .field.invalid input,
+    .field.invalid select,
+    .field.invalid textarea {
+      border-color: var(--error);
+    }
+    .field.invalid .field-error { display: block; }
+
+    /* Checkbox group */
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--bark);
+      cursor: pointer;
+      user-select: none;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--warm-white);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, border-color 0.15s;
+      position: relative;
+    }
+    .checkbox-label input[type="checkbox"]:checked {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .checkbox-label input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+    .checkbox-label input[type="checkbox"]:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(139,175,106,0.18);
+    }
+
+    .submit-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-submit {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      padding: 13px 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--pale); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--pale);
+      border-radius: 4px;
+      margin-top: 32px;
+    }
+    .form-success.visible { display: block; }
+    .form-success h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .form-success p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ── INFO SIDE ── */
+    .info-side {
+      padding: 64px 48px 80px 52px;
+      background: var(--surface);
+    }
+
+    .info-block {
+      margin-bottom: 48px;
+    }
+    .info-block:last-child { margin-bottom: 0; }
+
+    .info-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      text-decoration: none;
+    }
+    .contact-item:last-child { margin-bottom: 0; }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--pale);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .contact-icon svg {
+      width: 16px; height: 16px;
+      stroke: var(--green); fill: none;
+      stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--bark);
+      margin-bottom: 2px;
+    }
+    .contact-item-text span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    a.contact-item .contact-item-text strong { color: var(--green); }
+    a.contact-item:hover .contact-item-text strong { color: var(--bark); }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td {
+      font-size: 13px;
+      padding: 9px 0;
+      color: var(--bark);
+    }
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .area-tag {
+      font-size: 12px;
+      color: var(--green);
+      background: var(--pale);
+      border-radius: 20px;
+      padding: 5px 14px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      padding: 48px 48px 36px;
+      border-top: 1px solid rgba(201,212,184,0.1);
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(201,212,184,0.15);
+      margin-bottom: 28px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--warm-white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--sage); }
+    .footer-links { display: flex; gap: 32px; list-style: none; }
+    .footer-links a { font-size: 13px; color: var(--pale); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--warm-white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+    .footer-phone { font-size: 13px; color: var(--pale); text-decoration: none; }
+    .footer-phone:hover { color: var(--warm-white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav { padding: 0 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .page-header { padding: 40px 24px 48px; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-side { padding: 48px 24px 56px; border-right: none; border-bottom: 1px solid var(--border); }
+      .info-side { padding: 48px 24px 56px; }
+      .form-row { grid-template-columns: 1fr; }
+      .field.full { grid-column: span 1; }
+      footer { padding: 40px 24px 28px; }
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+    @media (max-width: 560px) {
+      .checkbox-group { grid-template-columns: 1fr; }
+      .footer-links { flex-direction: column; gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Signature <span>Grounds</span></a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a free estimate</a>
+    <button class="nav-mobile-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header class="page-header">
+    <p class="page-header-eyebrow">Get in touch</p>
+    <h1>Request a free estimate</h1>
+    <p>Tell us about your property and what you need. We'll get back to you promptly to schedule an on-site visit.</p>
+  </header>
+
+  <main>
+    <div class="contact-layout">
+
+      <!-- FORM -->
+      <div class="form-side">
+        <p class="form-eyebrow">Estimate request</p>
+        <h2 class="form-title">What can we help you with?</h2>
+
+        <form id="contact-form" novalidate>
+
+          <div class="form-row">
+            <div class="field" id="field-name">
+              <label for="name">Your name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith" required />
+              <span class="field-error" role="alert">Please enter your name.</span>
+            </div>
+            <div class="field" id="field-phone">
+              <label for="phone">Phone number <span class="required" aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="706-555-0100" required />
+              <span class="field-error" role="alert">Please enter a phone number.</span>
+            </div>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Email address <span class="required" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@example.com" required />
+            <span class="field-error" role="alert">Please enter a valid email address.</span>
+          </div>
+
+          <div class="field" id="field-address">
+            <label for="address">Property address</label>
+            <input type="text" id="address" name="address" autocomplete="street-address" placeholder="123 Magnolia Dr, Evans, GA 30809" />
+            <span class="field-hint">Helps us plan the estimate visit.</span>
+          </div>
+
+          <div class="field" id="field-service">
+            <label for="service">Service you're interested in <span class="required" aria-hidden="true">*</span></label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service…</option>
+              <option value="maintenance">Lawn &amp; landscape maintenance</option>
+              <option value="design">Landscape design &amp; installation</option>
+              <option value="irrigation">Irrigation design or repair</option>
+              <option value="drainage">Water control &amp; drainage</option>
+              <option value="lighting">Outdoor lighting</option>
+              <option value="walls">Retaining walls</option>
+              <option value="fencing">Gates &amp; fencing</option>
+              <option value="excavation">Excavation &amp; grading</option>
+              <option value="multiple">Multiple services</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+            <span class="field-error" role="alert">Please select a service.</span>
+          </div>
+
+          <fieldset style="border:none; margin-bottom: 24px;">
+            <legend style="font-size:13px; font-weight:500; color:var(--bark); margin-bottom:12px; letter-spacing:0.02em;">
+              Best way to reach you
+            </legend>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="contact_pref" value="call" /> Phone call
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="contact_pref" value="text" /> Text message
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="contact_pref" value="email" /> Email
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="contact_pref" value="any" /> Any works
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field full" id="field-message">
+            <label for="message">Tell us more (optional)</label>
+            <textarea id="message" name="message" placeholder="Describe your project, any specific concerns, or what you'd like to accomplish…"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn-submit" id="submit-btn">Send estimate request</button>
+            <p class="form-note">We'll respond within one business day.</p>
+          </div>
+
+        </form>
+
+        <div class="form-success" id="form-success" aria-live="polite">
+          <h3>Request received — thank you!</h3>
+          <p>We'll be in touch within one business day to schedule your free on-site estimate.</p>
+        </div>
+      </div>
+
+      <!-- INFO SIDEBAR -->
+      <div class="info-side">
+
+        <div class="info-block">
+          <p class="info-label">Call or text us</p>
+          <a href="tel:7068337150" class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>706-833-7150</strong>
+              <span>Call or text anytime</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="info-block">
+          <p class="info-label">Email</p>
+          <a href="mailto:matthew@signaturegrounds.com" class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <strong>matthew@signaturegrounds.com</strong>
+              <span>We respond within one business day</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="info-block">
+          <p class="info-label">Hours</p>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
+              <tr><td>Saturday</td><td>8:00 am – 4:00 pm</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:12px; color:var(--muted); margin-top:10px;">Hours are approximate — we're a working crew, so response times may vary. We'll always get back to you.</p>
+        </div>
+
+        <div class="info-block">
+          <p class="info-label">Areas we serve</p>
+          <div class="area-tags">
+            <span class="area-tag">Augusta, GA</span>
+            <span class="area-tag">Evans, GA</span>
+            <span class="area-tag">Martinez, GA</span>
+            <span class="area-tag">Appling, GA</span>
+          </div>
+          <p style="font-size:13px; color:var(--muted); margin-top:14px;">Not sure if we cover your area? Just give us a call — we're happy to let you know.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">Signature <span>Grounds</span></a>
+      <ul class="footer-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Signature Grounds, LLC · Augusta, GA</p>
+      <a href="tel:7068337150" class="footer-phone">706-833-7150</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile nav ──
+    const toggle = document.querySelector('.nav-mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const open = navLinks.style.display === 'flex';
+        navLinks.style.display = open ? 'none' : 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '68px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'var(--forest)';
+        navLinks.style.padding = '16px 24px 24px';
+        navLinks.style.gap = '16px';
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+    }
+
+    // ── Form validation ──
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function validateField(fieldId, inputEl) {
+      const wrapper = document.getElementById('field-' + fieldId);
+      if (!wrapper) return true;
+      let valid = true;
+
+      if (inputEl.type === 'email') {
+        valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputEl.value.trim());
+      } else {
+        valid = inputEl.value.trim() !== '' && inputEl.value !== '';
+      }
+
+      if (valid) {
+        wrapper.classList.remove('invalid');
+      } else {
+        wrapper.classList.add('invalid');
+      }
+      return valid;
+    }
+
+    // Live validation on blur
+    ['name', 'phone', 'email', 'service'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('blur', () => validateField(id, el));
+        el.addEventListener('input', () => {
+          if (el.closest('.field').classList.contains('invalid')) {
+            validateField(id, el);
+          }
+        });
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameEl    = document.getElementById('name');
+      const phoneEl   = document.getElementById('phone');
+      const emailEl   = document.getElementById('email');
+      const serviceEl = document.getElementById('service');
+
+      const valid = [
+        validateField('name',    nameEl),
+        validateField('phone',   phoneEl),
+        validateField('email',   emailEl),
+        validateField('service', serviceEl),
+      ].every(Boolean);
+
+      if (!valid) {
+        const firstInvalid = form.querySelector('.field.invalid input, .field.invalid select');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      // ── Submit the form ──
+      // The form is wired for client-side validation only.
+      // To send email, connect to a form backend:
+      //   Option A: Formspree — change <form> action to your Formspree endpoint
+      //   Option B: Netlify — add netlify attribute to <form>
+      //   Option C: EmailJS — call emailjs.send() here with the field values
+      //
+      // Example with Formspree (https://formspree.io):
+      //   const data = new FormData(form);
+      //   fetch('https://formspree.io/f/YOUR_ID', { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+      //     .then(r => r.ok ? showSuccess() : alert('Something went wrong. Please call us.'))
+      //     .catch(() => alert('Something went wrong. Please call us.'));
+
+      // For now, show the success message directly:
+      showSuccess();
+    });
+
+    function showSuccess() {
+      form.style.display = 'none';
+      successMsg.classList.add('visible');
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Signature Grounds LLC — professional landscaping, lawn maintenance, irrigation, drainage, outdoor lighting, and design in Augusta, Evans, Martinez, and Appling, GA." />
+  <title>Signature Grounds, LLC — Augusta, GA Landscaping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:   #0F1A0A;
+      --green:    #2D5016;
+      --sage:     #8BAF6A;
+      --pale:     #C9D4B8;
+      --warm-white: #F7F5F0;
+      --bark:     #3D3128;
+      --muted:    #6B6057;
+      --border:   #DDD8CF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-white);
+      color: var(--bark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--forest);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--warm-white);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--pale);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--warm-white); }
+
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      padding: 9px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--pale); }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--warm-white);
+      margin: 5px 0;
+      transition: all 0.2s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--forest);
+      padding: 80px 48px 88px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(45,80,22,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--warm-white);
+      margin-bottom: 28px;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--pale);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      padding: 13px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--pale); }
+
+    .btn-ghost {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--pale);
+      background: transparent;
+      border: 1px solid rgba(201,212,184,0.35);
+      border-radius: 4px;
+      padding: 12px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--pale); color: var(--warm-white); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat {
+      padding: 28px 48px;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 80px 48px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 400;
+      color: var(--bark);
+      line-height: 1.2;
+      margin-bottom: 48px;
+    }
+
+    /* ── SERVICE GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--warm-white);
+      padding: 32px 28px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:hover { background: #EFF2E8; }
+    .service-card:hover .service-arrow { transform: translateX(4px); }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--pale);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--bark);
+      line-height: 1.3;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .service-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .service-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 48px;
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-strip p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-strip p:last-of-type { margin-bottom: 0; }
+
+    .about-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .photo-placeholder {
+      background: var(--pale);
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-placeholder:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+    .photo-placeholder svg {
+      width: 28px; height: 28px;
+      stroke: var(--sage); fill: none;
+      stroke-width: 1.5; opacity: 0.6;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial {
+      background: var(--green);
+      padding: 72px 48px;
+    }
+
+    .testimonial-inner {
+      max-width: 680px;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 400;
+      color: var(--warm-white);
+      line-height: 1.45;
+      margin-bottom: 28px;
+    }
+
+    .testimonial-attr {
+      font-size: 13px;
+      color: var(--pale);
+      letter-spacing: 0.04em;
+    }
+    .testimonial-attr strong {
+      color: var(--warm-white);
+      font-weight: 500;
+    }
+
+    /* ── SERVICE AREA ── */
+    .area-section {
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .area-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .area-list li {
+      font-size: 15px;
+      color: var(--bark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .area-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .area-cta {
+      background: var(--pale);
+      border-radius: 4px;
+      padding: 32px;
+      margin-top: 32px;
+    }
+
+    .area-cta p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--bark);
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .contact-detail:hover { color: var(--green); }
+    .contact-detail svg {
+      width: 16px; height: 16px;
+      stroke: var(--sage); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      padding: 48px 48px 36px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(201,212,184,0.15);
+      margin-bottom: 28px;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--warm-white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--sage); }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--pale);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--warm-white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-phone {
+      font-size: 13px;
+      color: var(--pale);
+      text-decoration: none;
+    }
+    .footer-phone:hover { color: var(--warm-white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav { padding: 0 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+
+      .hero { padding: 56px 24px 64px; }
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat { padding: 20px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+
+      .section { padding: 56px 24px; }
+      .divider { margin: 0 24px; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+
+      .about-strip { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+      .area-section { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px; }
+
+      .testimonial { padding: 56px 24px; }
+
+      footer { padding: 40px 24px 28px; }
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .area-list { grid-template-columns: 1fr; }
+      .about-photo-grid { grid-template-columns: 1fr; }
+      .about-photo-grid .photo-placeholder:first-child { grid-column: span 1; }
+      .footer-links { flex-direction: column; gap: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Signature <span>Grounds</span></a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a free estimate</a>
+    <button class="nav-mobile-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Augusta · Evans · Martinez · Appling, GA</p>
+      <h1 class="hero-headline">
+        Your outdoor space,<br><em>done right.</em>
+      </h1>
+      <p class="hero-sub">
+        Signature Grounds handles everything from weekly lawn maintenance to full landscape design and installation — so your property always looks its best, without the effort.
+      </p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn-primary">Request a free estimate</a>
+        <a href="gallery.html" class="btn-ghost">View our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar" aria-label="At a glance">
+    <div class="stat">
+      <div class="stat-number">8+</div>
+      <div class="stat-label">Services we offer</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Areas served in the CSRA</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Satisfaction, every time</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" aria-labelledby="services-heading">
+    <p class="section-eyebrow">What we do</p>
+    <h2 class="section-title" id="services-heading">Everything your property needs</h2>
+
+    <div class="services-grid" role="list">
+
+      <a href="services.html#lawn-maintenance" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 20V10M12 10C10 10 6 9 4 4c4 0 7 2 8 6zM12 10c2 0 6-1 8-6-4 0-7 2-8 6z"/><path d="M4 20h16"/></svg>
+        </div>
+        <h3 class="service-name">Lawn &amp; Landscape Maintenance</h3>
+        <p class="service-desc">Mowing, edging, pruning, weed control — all handled attentively and on schedule.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#landscape-design" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3 class="service-name">Landscape Design &amp; Installation</h3>
+        <p class="service-desc">From concept to finished outdoor oasis — shrubs, sod, pergolas, outdoor kitchens, and more.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#irrigation" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8 8 6 11 6 14a6 6 0 0 0 12 0c0-3-2-6-6-12z"/><path d="M6 14h12"/></svg>
+        </div>
+        <h3 class="service-name">Irrigation Design &amp; Repair</h3>
+        <p class="service-desc">Stop watering your driveway. We design and install systems that deliver water where it belongs.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#drainage" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M5 12l4-4M5 12l4 4"/><path d="M3 6V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1"/></svg>
+        </div>
+        <h3 class="service-name">Water Control &amp; Drainage</h3>
+        <p class="service-desc">French drains, trench drains, catch basins, dry wells — we solve yard flooding for good.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#lighting" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2v1M12 6a6 6 0 0 1 6 6c0 2-1 4-3 5.2V18H9v-.8C7 16 6 14 6 12a6 6 0 0 1 6-6z"/></svg>
+        </div>
+        <h3 class="service-name">Outdoor Lighting</h3>
+        <p class="service-desc">Professionally designed lighting that highlights your home and landscape after dark.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#retaining-walls" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2" y="14" width="20" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="6" y="6" width="12" height="4" rx="1"/></svg>
+        </div>
+        <h3 class="service-name">Retaining Walls</h3>
+        <p class="service-desc">Natural stone, brick, interlocking pavers — built to hold, season after season.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#fencing" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 20V8l4-4 4 4v12M12 20V8l4-4 4 4v12M4 14h16"/></svg>
+        </div>
+        <h3 class="service-name">Gates &amp; Fencing</h3>
+        <p class="service-desc">Steel, wrought iron, wood, vinyl, stone — fencing that finishes your property in style.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+      <a href="services.html#excavation" class="service-card" role="listitem">
+        <div class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 20h20M6 20V10l6-7 6 7v10"/><path d="M9 20v-6h6v6"/></svg>
+        </div>
+        <h3 class="service-name">Excavation &amp; Grading</h3>
+        <p class="service-desc">Precision grading that sets every project up for long-term drainage and structural success.</p>
+        <span class="service-link">Learn more <span class="service-arrow" aria-hidden="true">→</span></span>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <div>
+      <p class="section-eyebrow">About Signature Grounds</p>
+      <h2 class="section-title" style="margin-bottom: 24px;">If you can dream it, we can make it happen.</h2>
+      <p>Signature Grounds is a full-service landscaping company serving Augusta and the surrounding CSRA. We have the tools, resources, and expertise to take on any outdoor project — from routine lawn care to complete property transformations.</p>
+      <p>We pride ourselves on attentive, respectful service that leaves every landscape looking beautiful and tidy. Whatever your outdoor vision is, we're here to bring it to life.</p>
+      <a href="about.html" class="btn-primary" style="margin-top: 28px; display: inline-block;">More about us</a>
+    </div>
+    <div class="about-photo-grid" aria-label="Project photos">
+      <!-- Replace these placeholders with real project images -->
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial" aria-label="Client testimonial">
+    <div class="testimonial-inner">
+      <blockquote>
+        "Our yard has never looked better. Signature Grounds handles everything — we don't have to think about it."
+      </blockquote>
+      <p class="testimonial-attr"><strong>Augusta homeowner</strong> · Regular maintenance client</p>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="area-section" aria-labelledby="area-heading">
+    <div>
+      <p class="section-eyebrow">Where we work</p>
+      <h2 class="section-title" id="area-heading" style="margin-bottom: 0;">Serving the greater Augusta area</h2>
+      <ul class="area-list" aria-label="Service areas">
+        <li><span class="area-dot" aria-hidden="true"></span>Augusta, GA</li>
+        <li><span class="area-dot" aria-hidden="true"></span>Evans, GA</li>
+        <li><span class="area-dot" aria-hidden="true"></span>Martinez, GA</li>
+        <li><span class="area-dot" aria-hidden="true"></span>Appling, GA</li>
+      </ul>
+    </div>
+    <div>
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title" style="margin-bottom: 0;">Ready for a better-looking yard?</h2>
+      <div class="area-cta">
+        <p>Reach out for a free on-site estimate. We'll walk your property and put together a plan that fits your goals and budget.</p>
+        <a href="tel:7068337150" class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          706-833-7150
+        </a>
+        <a href="mailto:matthew@signaturegrounds.com" class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          matthew@signaturegrounds.com
+        </a>
+        <a href="contact.html" class="btn-primary" style="margin-top: 20px; display: inline-block;">Request a free estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">Signature <span>Grounds</span></a>
+      <ul class="footer-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Signature Grounds, LLC · Augusta, GA</p>
+      <a href="tel:7068337150" class="footer-phone">706-833-7150</a>
+    </div>
+  </footer>
+
+</body>
+</html>

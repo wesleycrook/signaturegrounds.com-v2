@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Signature Grounds offers lawn maintenance, landscape design, irrigation, drainage, outdoor lighting, retaining walls, fencing, and excavation in Augusta, GA." />
+  <title>Services — Signature Grounds, LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:     #0F1A0A;
+      --green:      #2D5016;
+      --sage:       #8BAF6A;
+      --pale:       #C9D4B8;
+      --warm-white: #F7F5F0;
+      --bark:       #3D3128;
+      --muted:      #6B6057;
+      --border:     #DDD8CF;
+      --surface:    #EFF2E8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-white);
+      color: var(--bark);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--forest);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--warm-white);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--pale);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--warm-white); }
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      padding: 9px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--pale); }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--warm-white);
+      margin: 5px 0;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--forest);
+      padding: 56px 48px 60px;
+    }
+    .page-header-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      color: var(--warm-white);
+      line-height: 1.15;
+      max-width: 560px;
+    }
+
+    /* ── SERVICE NAV ── */
+    .service-nav {
+      background: var(--green);
+      padding: 0 48px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+    }
+    .service-nav-list {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+    .service-nav-list a {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--pale);
+      text-decoration: none;
+      padding: 16px 20px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .service-nav-list a:hover {
+      color: var(--warm-white);
+      border-bottom-color: var(--sage);
+    }
+
+    /* ── SERVICE SECTIONS ── */
+    .service-section {
+      padding: 80px 48px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .service-section:last-of-type { border-bottom: none; }
+
+    .service-section:nth-child(even) {
+      background: var(--surface);
+    }
+
+    .service-meta { position: sticky; top: 88px; }
+
+    .service-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 400;
+      color: var(--pale);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .service-section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .service-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      color: var(--bark);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .service-section-lead {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .service-body { display: flex; flex-direction: column; gap: 32px; }
+
+    .service-body p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .service-body strong { color: var(--bark); font-weight: 500; }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .service-list li {
+      font-size: 14px;
+      color: var(--bark);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--warm-white);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .service-section:nth-child(even) .service-list li {
+      background: var(--warm-white);
+    }
+    .list-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--sage);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .service-callout {
+      background: var(--green);
+      border-radius: 4px;
+      padding: 24px 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--warm-white);
+      line-height: 1.45;
+      font-style: italic;
+    }
+
+    .service-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .service-photo {
+      background: var(--pale);
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-photo:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+    .service-photo svg {
+      width: 28px; height: 28px;
+      stroke: var(--sage); fill: none;
+      stroke-width: 1.5; opacity: 0.5;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ── CTA FOOTER STRIP ── */
+    .cta-strip {
+      background: var(--forest);
+      padding: 72px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cta-strip-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 8px;
+    }
+    .cta-strip-text p {
+      font-size: 14px;
+      color: var(--pale);
+    }
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--forest);
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      padding: 13px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-primary:hover { background: var(--pale); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      padding: 48px 48px 36px;
+      border-top: 1px solid rgba(201,212,184,0.1);
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(201,212,184,0.15);
+      margin-bottom: 28px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--warm-white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--sage); }
+    .footer-links { display: flex; gap: 32px; list-style: none; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--pale);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--warm-white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 12px; color: var(--muted); }
+    .footer-phone { font-size: 13px; color: var(--pale); text-decoration: none; }
+    .footer-phone:hover { color: var(--warm-white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav { padding: 0 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+
+      .page-header { padding: 40px 24px 48px; }
+      .service-nav { padding: 0 24px; }
+
+      .service-section {
+        grid-template-columns: 1fr;
+        padding: 56px 24px;
+        gap: 36px;
+      }
+      .service-meta { position: static; }
+      .service-number { font-size: 48px; }
+
+      .cta-strip { padding: 56px 24px; flex-direction: column; align-items: flex-start; }
+
+      footer { padding: 40px 24px 28px; }
+      .footer-top { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .service-photos { grid-template-columns: 1fr; }
+      .service-photo:first-child { grid-column: span 1; }
+      .footer-links { flex-direction: column; gap: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">Signature <span>Grounds</span></a>
+    <ul class="nav-links">
+      <li><a href="services.html" aria-current="page">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Get a free estimate</a>
+    <button class="nav-mobile-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <p class="page-header-eyebrow">What we do</p>
+    <h1>Comprehensive landscaping services for the CSRA</h1>
+  </header>
+
+  <!-- SERVICE QUICK NAV -->
+  <nav class="service-nav" aria-label="Jump to service">
+    <ul class="service-nav-list">
+      <li><a href="#lawn-maintenance">Lawn Maintenance</a></li>
+      <li><a href="#landscape-design">Landscape Design</a></li>
+      <li><a href="#irrigation">Irrigation</a></li>
+      <li><a href="#drainage">Drainage</a></li>
+      <li><a href="#lighting">Outdoor Lighting</a></li>
+      <li><a href="#retaining-walls">Retaining Walls</a></li>
+      <li><a href="#fencing">Gates &amp; Fencing</a></li>
+      <li><a href="#excavation">Excavation &amp; Grading</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- 1. LAWN MAINTENANCE -->
+    <section class="service-section" id="lawn-maintenance" aria-labelledby="s1-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">01</div>
+        <p class="service-section-eyebrow">Core service</p>
+        <h2 id="s1-title">Lawn &amp; Landscape Maintenance</h2>
+        <p class="service-section-lead">You can depend on us to keep your landscapes looking great — with care and without fail.</p>
+      </div>
+      <div class="service-body">
+        <p>With our complete lawn and landscape maintenance service, you can rest knowing all of your outdoor chores are handled attentively and respectfully. We always leave your property looking beautiful and tidy.</p>
+        <p>Every maintenance visit is thorough. We take the right approach for your specific grass type and current season — not a one-size-fits-all routine.</p>
+        <ul class="service-list" aria-label="Maintenance includes">
+          <li><span class="list-dot" aria-hidden="true"></span>Mowing at the correct height for your grass type and season</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Pruning shrubs and ornamental trees as needed</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Edging all driveways, pathways, patios, and bed lines</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Removing all organic debris after cutting and pruning</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Blowing off all hard surfaces — driveways, patios, carports</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Weed control in all defined beds</li>
+        </ul>
+        <div class="service-photos" aria-label="Maintenance project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. LANDSCAPE DESIGN -->
+    <section class="service-section" id="landscape-design" aria-labelledby="s2-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">02</div>
+        <p class="service-section-eyebrow">Design &amp; Installation</p>
+        <h2 id="s2-title">Landscape Design &amp; Installation</h2>
+        <p class="service-section-lead">Do you have your own ideas but need help designing and installing your outdoor oasis?</p>
+      </div>
+      <div class="service-body">
+        <p>Signature Grounds wants to help make your dreams a reality. Whether you have a clear vision or are starting from scratch, we can assist with full landscape design and the complete installation of your outdoor space.</p>
+        <p>We have the tools, resources, and expertise for every stage — from initial grading and excavation to the final plantings and lighting accents.</p>
+        <ul class="service-list" aria-label="Design and installation includes">
+          <li><span class="list-dot" aria-hidden="true"></span>Landscape design consultation and planning</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Shrub and sod installation</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Outdoor kitchens and pergolas</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Decks and patio structures</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Irrigation system integration</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Outdoor lighting design</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Retaining walls and terracing</li>
+        </ul>
+        <p class="service-callout">"If you can dream it, Signature Grounds can make it happen."</p>
+        <div class="service-photos" aria-label="Landscape design project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. IRRIGATION -->
+    <section class="service-section" id="irrigation" aria-labelledby="s3-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">03</div>
+        <p class="service-section-eyebrow">Water management</p>
+        <h2 id="s3-title">Irrigation Design, Installation &amp; Repair</h2>
+        <p class="service-section-lead">Stop watering your driveway. We design systems that deliver water exactly where it belongs.</p>
+      </div>
+      <div class="service-body">
+        <p>Is your sprinkler system in need of repair? Is your fence damaged from inaccurate sprinkler coverage? Signature Grounds uses the latest water delivery technology to irrigate your landscape efficiently — without wasting money or harming the environment through overspray and runoff.</p>
+        <p><strong>The hidden costs of a poorly designed system:</strong></p>
+        <ul class="service-list" aria-label="Costs of poor irrigation">
+          <li><span class="list-dot" aria-hidden="true"></span>Paying for water that never reaches your lawn or landscaping</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Damage to fencing, siding, patios, and walkways from overspray</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Fertilizer and chemical runoff polluting local creeks and waterways</li>
+        </ul>
+        <p>We design, install, and repair irrigation systems for properties of all sizes — from residential lawns to larger commercial landscapes. Call us and we'll put together the right system for your specific conditions.</p>
+        <div class="service-photos" aria-label="Irrigation project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DRAINAGE -->
+    <section class="service-section" id="drainage" aria-labelledby="s4-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">04</div>
+        <p class="service-section-eyebrow">Water control</p>
+        <h2 id="s4-title">Water Control &amp; Drainage Systems</h2>
+        <p class="service-section-lead">Does your yard wash during heavy rains? Do you have standing water after a storm?</p>
+      </div>
+      <div class="service-body">
+        <p>A well-designed drainage system is essential to protect your home's foundation and maintain healthy trees, shrubs, and turf. Poor drainage also attracts mosquitoes, which prefer standing water to lay their eggs.</p>
+        <p>Signature Grounds uses the latest technology to map your property's topography and engineer a drainage solution that solves the problem permanently. We handle everything from site assessment to full installation.</p>
+        <ul class="service-list" aria-label="Drainage systems we install">
+          <li><span class="list-dot" aria-hidden="true"></span>French drains</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Curtain drains</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Trench drains</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Dry wells</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Yard inlets</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Catch basins with or without sump pumps</li>
+        </ul>
+        <p class="service-callout">"Signature Grounds — our drains work."</p>
+        <div class="service-photos" aria-label="Drainage project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. LIGHTING -->
+    <section class="service-section" id="lighting" aria-labelledby="s5-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">05</div>
+        <p class="service-section-eyebrow">Outdoor ambiance</p>
+        <h2 id="s5-title">Outdoor Lighting</h2>
+        <p class="service-section-lead">Make your property stand out day and night.</p>
+      </div>
+      <div class="service-body">
+        <p>Landscape lighting is one of the most overlooked investments homeowners can make — and one of the most transformative. A well-designed lighting system:</p>
+        <ul class="service-list" aria-label="Benefits of outdoor lighting">
+          <li><span class="list-dot" aria-hidden="true"></span>Casts your home in a warm, welcoming glow</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Enables safe movement around the property after dark</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Extends the time you can comfortably spend outdoors</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Highlights architectural features and landscaping you're proud of</li>
+        </ul>
+        <p>Our outdoor lighting systems are professionally designed and installed to highlight your home beautifully, with all electrical components installed properly and to code. We're happy to offer ideas and guidance on smart, tasteful lighting techniques.</p>
+        <div class="service-photos" aria-label="Outdoor lighting project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. RETAINING WALLS -->
+    <section class="service-section" id="retaining-walls" aria-labelledby="s6-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">06</div>
+        <p class="service-section-eyebrow">Hardscaping</p>
+        <h2 id="s6-title">Retaining Walls</h2>
+        <p class="service-section-lead">When your landscape needs structural support, it has to last — permanently.</p>
+      </div>
+      <div class="service-body">
+        <p>Our solid experience in designing and building retaining walls is your assurance that you'll have a wall that stays in place, season after season. We work with a range of materials to match your property's character and your budget.</p>
+        <ul class="service-list" aria-label="Wall materials we work with">
+          <li><span class="list-dot" aria-hidden="true"></span>Natural stone</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Brick</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Large interlocking pavers</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Concrete</li>
+        </ul>
+        <p>Retaining walls can also be a visually striking way to pull your whole landscape together. On sloped properties, introducing a series of terraces — with a stairway running through the middle — can create a luxurious and inviting outdoor environment that makes even small yards feel larger and more dynamic.</p>
+        <div class="service-photos" aria-label="Retaining wall project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FENCING -->
+    <section class="service-section" id="fencing" aria-labelledby="s7-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">07</div>
+        <p class="service-section-eyebrow">Hardscaping</p>
+        <h2 id="s7-title">Gates &amp; Fencing</h2>
+        <p class="service-section-lead">Finish your property in style with fencing that complements both you and your home.</p>
+      </div>
+      <div class="service-body">
+        <p>A well-chosen fence and gate can set a welcoming tone for your entire property. Privacy is important to most homeowners, and fencing can provide that seclusion in a variety of ways — from solid panels to open woodwork combined with greenery, which can offer the same private feel while adding beautiful character.</p>
+        <p>We install fencing in a wide variety of materials, and combinations of materials can make for especially attractive solutions — wood fencing atop stone retaining walls, wrought iron between cement block gate posts, or wood trellises above a concrete wall.</p>
+        <ul class="service-list" aria-label="Fencing materials we work with">
+          <li><span class="list-dot" aria-hidden="true"></span>Steel and wrought iron</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Wood — oak, cedar, pine, and more</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Vinyl</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Wire</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Stone — fieldstone, slate, and more</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Concrete</li>
+        </ul>
+        <div class="service-photos" aria-label="Fencing project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. EXCAVATION -->
+    <section class="service-section" id="excavation" aria-labelledby="s8-title">
+      <div class="service-meta">
+        <div class="service-number" aria-hidden="true">08</div>
+        <p class="service-section-eyebrow">Site preparation</p>
+        <h2 id="s8-title">Excavation &amp; Grading</h2>
+        <p class="service-section-lead">The right grade is the foundation of a landscape that functions well and looks beautiful.</p>
+      </div>
+      <div class="service-body">
+        <p>Whether you want to start a project off right or you need to resolve a specific drainage issue, adjusting the grade of your property can be a crucial step. The critical factor is using a company that has more than the right equipment — expertise is essential in ensuring a result that serves you for years.</p>
+        <p>We can help you assess your property grades, drainage needs, and plans for usage to make valuable recommendations and prevent future issues. When excavation is needed — beneath softscapes or hardscape — we get it done safely, precisely, and always with care for surrounding areas.</p>
+        <ul class="service-list" aria-label="Excavation and grading services">
+          <li><span class="list-dot" aria-hidden="true"></span>Property grade assessment and recommendations</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Drainage-focused regrading</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Excavation for foundations, walls, and hardscape</li>
+          <li><span class="list-dot" aria-hidden="true"></span>Land clearing and site preparation</li>
+        </ul>
+        <div class="service-photos" aria-label="Excavation project photos">
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+          <div class="service-photo"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="cta-strip-text">
+      <h2>Ready to get started?</h2>
+      <p>Free on-site estimates for all services. Serving Augusta, Evans, Martinez, and Appling.</p>
+    </div>
+    <a href="contact.html" class="btn-primary">Request a free estimate</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">Signature <span>Grounds</span></a>
+      <ul class="footer-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Signature Grounds, LLC · Augusta, GA</p>
+      <a href="tel:7068337150" class="footer-phone">706-833-7150</a>
+    </div>
+  </footer>
+
+</body>
+</html>
