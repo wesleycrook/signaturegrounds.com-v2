@@ -243,7 +243,7 @@ footer {
   position: absolute;
   inset: 0;
   background: url('../images/hero-bg.jpg') center / cover no-repeat;
-  opacity: 0.05;
+  opacity: 0.1;
 }
 .hero::after {
   content: '';
@@ -1252,6 +1252,9 @@ a.contact-item:hover .contact-item-text strong { color: var(--bark); }
   color: var(--warm-white);
   line-height: 1.45;
   font-style: italic;
+}
+.service-body p.service-callout {
+  color: var(--warm-white);
 }
 .service-photos {
   display: grid;
