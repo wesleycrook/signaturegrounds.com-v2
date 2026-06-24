@@ -238,6 +238,13 @@ footer {
   position: relative;
   overflow: hidden;
 }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/hero-bg.jpg') center / cover no-repeat;
+  opacity: 0.05;
+}
 .hero::after {
   content: '';
   position: absolute;
