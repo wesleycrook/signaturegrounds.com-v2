@@ -1,6 +1,6 @@
 // Main functions that run various features
 document.addEventListener('DOMContentLoaded', () => {
-  // Update the Copyright year in the footer (on every page)
+  // Update the copyright year in the footer (on every page)
   // to always have the current year.
   const el = document.getElementById('copyright-year');
   if (el) el.textContent = new Date().getFullYear();
