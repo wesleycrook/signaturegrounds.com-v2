@@ -206,14 +206,11 @@ footer {
   border-bottom: 1px solid rgba(201,212,184,0.15);
   margin-bottom: 28px;
 }
-.footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--warm-white);
-  text-decoration: none;
+
+.footer-logo img {
+  height: 60px;
 }
-.footer-logo span { color: var(--sage); }
+
 .footer-links { display: flex; gap: 32px; list-style: none; }
 .footer-links a { font-size: 13px; color: var(--pale); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--warm-white); }
@@ -225,6 +222,10 @@ footer {
 .footer-badges a { display: inline-flex; transition: filter 0.2s; }
 .footer-badges a:hover { filter: brightness(1.25); }
 .footer-badges img { height: 30px; width: auto; }
+
+@media (max-width: 480px) {
+  .footer-badges { gap: 20px; }
+}
 
 
 /* ════════════════════════════════════════
