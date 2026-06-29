@@ -157,16 +157,18 @@
       <p>We pride ourselves on attentive, respectful service that leaves every landscape looking beautiful and tidy. Whatever your outdoor vision is, we're here to bring it to life.</p>
       <a href="about.html" class="btn-primary" style="margin-top: 28px; display: inline-block;">More about us</a>
     </div>
-    <div class="about-photo-grid" aria-label="Project photos">
-      <!-- Replace these placeholders with real project images -->
-      <div class="photo-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+    <div class="home-about-photo-grid" aria-label="Project photos">
+      <div class="photo-item" role="button" tabindex="0" aria-label="View full yard photo" data-large="images/home/overhead-full-yard-lg.jpg">
+        <img src="images/home/overhead-full-yard-sm.jpg" alt="Overhead view of a fully manicured yard">
+        <div class="photo-overlay"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
-      <div class="photo-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      <div class="photo-item" role="button" tabindex="0" aria-label="View manicured lawn photo" data-large="images/home/manicured-grass-lg.jpg">
+        <img src="images/home/manicured-grass-sm.jpg" alt="Perfectly manicured lawn with mowing stripes">
+        <div class="photo-overlay"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
-      <div class="photo-placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      <div class="photo-item" role="button" tabindex="0" aria-label="View putting green photo" data-large="images/home/putting-green-lg.jpg">
+        <img src="images/home/putting-green-sm.jpg" alt="Custom residential putting green installation">
+        <div class="photo-overlay"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
     </div>
   </div>
@@ -232,6 +234,64 @@
       <a href="tel:7068337150" class="footer-phone">706-833-7150</a>
     </div>
   </footer>
+  <div class="lightbox" id="home-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="home-lightbox-close" aria-label="Close photo viewer">×</button>
+      <button class="lightbox-nav lightbox-prev" id="home-lightbox-prev" aria-label="Previous photo">&#8249;</button>
+      <img src="" alt="" id="home-lightbox-img" style="width:100%;border-radius:4px;display:block;">
+      <button class="lightbox-nav lightbox-next" id="home-lightbox-next" aria-label="Next photo">&#8250;</button>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script>
+    const homeLightbox = document.getElementById('home-lightbox');
+    const homeLightboxImg = document.getElementById('home-lightbox-img');
+    const homeLightboxClose = document.getElementById('home-lightbox-close');
+    const homeLightboxPrev = document.getElementById('home-lightbox-prev');
+    const homeLightboxNext = document.getElementById('home-lightbox-next');
+
+    const homePhotos = Array.from(document.querySelectorAll('.home-about-photo-grid .photo-item'));
+    let currentPhotoIndex = 0;
+
+    function openHomeLightbox(index) {
+      currentPhotoIndex = index;
+      const item = homePhotos[index];
+      homeLightboxImg.src = item.dataset.large;
+      homeLightboxImg.alt = item.querySelector('img').alt;
+      homeLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      homeLightboxPrev.style.visibility = index > 0 ? 'visible' : 'hidden';
+      homeLightboxNext.style.visibility = index < homePhotos.length - 1 ? 'visible' : 'hidden';
+    }
+
+    function closeHomeLightbox() {
+      homeLightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      homeLightboxImg.src = '';
+    }
+
+    homePhotos.forEach((item, index) => {
+      item.addEventListener('click', () => openHomeLightbox(index));
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openHomeLightbox(index);
+        }
+      });
+    });
+
+    homeLightboxPrev.addEventListener('click', () => { if (currentPhotoIndex > 0) openHomeLightbox(currentPhotoIndex - 1); });
+    homeLightboxNext.addEventListener('click', () => { if (currentPhotoIndex < homePhotos.length - 1) openHomeLightbox(currentPhotoIndex + 1); });
+
+    homeLightboxClose.addEventListener('click', closeHomeLightbox);
+    homeLightbox.addEventListener('click', e => { if (e.target === homeLightbox) closeHomeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!homeLightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeHomeLightbox();
+      if (e.key === 'ArrowLeft' && currentPhotoIndex > 0) openHomeLightbox(currentPhotoIndex - 1);
+      if (e.key === 'ArrowRight' && currentPhotoIndex < homePhotos.length - 1) openHomeLightbox(currentPhotoIndex + 1);
+    });
+  </script>
 </body>
 </html>
