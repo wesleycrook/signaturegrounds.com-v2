@@ -47,9 +47,9 @@
     
     <!-- INTRO -->
     <div class="intro-split">
-      <!-- Replace with a real team or property photo -->
-      <div class="intro-photo" aria-label="Signature Grounds team photo placeholder">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+      <div class="intro-photo photo-item" role="button" tabindex="0" aria-label="View full photo" data-large="images/about/full-yard-shot-lg.jpg">
+        <img src="images/about/full-yard-shot-sm.jpg" alt="Signature Grounds full yard landscaping project">
+        <div class="photo-overlay"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
       <div class="intro-text">
         <p class="eyebrow">About us</p>
@@ -197,6 +197,44 @@
       <a href="tel:7068337150" class="footer-phone">706-833-7150</a>
     </div>
   </footer>
+  <div class="lightbox" id="about-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="about-lightbox-close" aria-label="Close photo viewer">×</button>
+      <img src="" alt="" id="about-lightbox-img" style="width:100%;border-radius:4px;display:block;">
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script>
+    const aboutLightbox = document.getElementById('about-lightbox');
+    const aboutLightboxImg = document.getElementById('about-lightbox-img');
+    const aboutLightboxClose = document.getElementById('about-lightbox-close');
+    const aboutPhotoItem = document.querySelector('.intro-split .photo-item');
+
+    function openAboutLightbox() {
+      aboutLightboxImg.src = aboutPhotoItem.dataset.large;
+      aboutLightboxImg.alt = aboutPhotoItem.querySelector('img').alt;
+      aboutLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAboutLightbox() {
+      aboutLightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      aboutLightboxImg.src = '';
+    }
+
+    aboutPhotoItem.addEventListener('click', openAboutLightbox);
+    aboutPhotoItem.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAboutLightbox();
+      }
+    });
+
+    aboutLightboxClose.addEventListener('click', closeAboutLightbox);
+    aboutLightbox.addEventListener('click', e => { if (e.target === aboutLightbox) closeAboutLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAboutLightbox(); });
+  </script>
 </body>
 </html>
