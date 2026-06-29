@@ -205,36 +205,5 @@
   </div>
 
   <script src="js/main.js"></script>
-  <script>
-    const aboutLightbox = document.getElementById('about-lightbox');
-    const aboutLightboxImg = document.getElementById('about-lightbox-img');
-    const aboutLightboxClose = document.getElementById('about-lightbox-close');
-    const aboutPhotoItem = document.querySelector('.intro-split .photo-item');
-
-    function openAboutLightbox() {
-      aboutLightboxImg.src = aboutPhotoItem.dataset.large;
-      aboutLightboxImg.alt = aboutPhotoItem.querySelector('img').alt;
-      aboutLightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeAboutLightbox() {
-      aboutLightbox.classList.remove('open');
-      document.body.style.overflow = '';
-      aboutLightboxImg.src = '';
-    }
-
-    aboutPhotoItem.addEventListener('click', openAboutLightbox);
-    aboutPhotoItem.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openAboutLightbox();
-      }
-    });
-
-    aboutLightboxClose.addEventListener('click', closeAboutLightbox);
-    aboutLightbox.addEventListener('click', e => { if (e.target === aboutLightbox) closeAboutLightbox(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAboutLightbox(); });
-  </script>
 </body>
 </html>

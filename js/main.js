@@ -23,4 +23,58 @@ document.addEventListener('DOMContentLoaded', () => {
       toggle.setAttribute('aria-expanded', String(!open));
     });
   }
+
+  // Lightbox initializer — safe to call on any page; no-ops if the
+  // lightbox element doesn't exist. Supports optional prev/next buttons
+  // when multiple photos are passed via photoSelector.
+  function initLightbox(lightboxId, photoSelector) {
+    const lightbox = document.getElementById(lightboxId);
+    if (!lightbox) return;
+
+    const lightboxImg = lightbox.querySelector('img');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const photos = Array.from(document.querySelectorAll(photoSelector));
+    let currentIndex = 0;
+
+    function open(index) {
+      currentIndex = index;
+      const item = photos[index];
+      lightboxImg.src = item.dataset.large;
+      lightboxImg.alt = item.querySelector('img').alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (prevBtn) prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
+      if (nextBtn) nextBtn.style.visibility = index < photos.length - 1 ? 'visible' : 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    photos.forEach((item, index) => {
+      item.addEventListener('click', () => open(index));
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(index); }
+      });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentIndex > 0) open(currentIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentIndex < photos.length - 1) open(currentIndex + 1); });
+
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (prevBtn && e.key === 'ArrowLeft' && currentIndex > 0) open(currentIndex - 1);
+      if (nextBtn && e.key === 'ArrowRight' && currentIndex < photos.length - 1) open(currentIndex + 1);
+    });
+  }
+
+  initLightbox('home-lightbox', '.home-about-photo-grid .photo-item');
+  initLightbox('about-lightbox', '.intro-split .photo-item');
 });

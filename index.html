@@ -244,54 +244,5 @@
   </div>
 
   <script src="js/main.js"></script>
-  <script>
-    const homeLightbox = document.getElementById('home-lightbox');
-    const homeLightboxImg = document.getElementById('home-lightbox-img');
-    const homeLightboxClose = document.getElementById('home-lightbox-close');
-    const homeLightboxPrev = document.getElementById('home-lightbox-prev');
-    const homeLightboxNext = document.getElementById('home-lightbox-next');
-
-    const homePhotos = Array.from(document.querySelectorAll('.home-about-photo-grid .photo-item'));
-    let currentPhotoIndex = 0;
-
-    function openHomeLightbox(index) {
-      currentPhotoIndex = index;
-      const item = homePhotos[index];
-      homeLightboxImg.src = item.dataset.large;
-      homeLightboxImg.alt = item.querySelector('img').alt;
-      homeLightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      homeLightboxPrev.style.visibility = index > 0 ? 'visible' : 'hidden';
-      homeLightboxNext.style.visibility = index < homePhotos.length - 1 ? 'visible' : 'hidden';
-    }
-
-    function closeHomeLightbox() {
-      homeLightbox.classList.remove('open');
-      document.body.style.overflow = '';
-      homeLightboxImg.src = '';
-    }
-
-    homePhotos.forEach((item, index) => {
-      item.addEventListener('click', () => openHomeLightbox(index));
-      item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openHomeLightbox(index);
-        }
-      });
-    });
-
-    homeLightboxPrev.addEventListener('click', () => { if (currentPhotoIndex > 0) openHomeLightbox(currentPhotoIndex - 1); });
-    homeLightboxNext.addEventListener('click', () => { if (currentPhotoIndex < homePhotos.length - 1) openHomeLightbox(currentPhotoIndex + 1); });
-
-    homeLightboxClose.addEventListener('click', closeHomeLightbox);
-    homeLightbox.addEventListener('click', e => { if (e.target === homeLightbox) closeHomeLightbox(); });
-    document.addEventListener('keydown', e => {
-      if (!homeLightbox.classList.contains('open')) return;
-      if (e.key === 'Escape') closeHomeLightbox();
-      if (e.key === 'ArrowLeft' && currentPhotoIndex > 0) openHomeLightbox(currentPhotoIndex - 1);
-      if (e.key === 'ArrowRight' && currentPhotoIndex < homePhotos.length - 1) openHomeLightbox(currentPhotoIndex + 1);
-    });
-  </script>
 </body>
 </html>
