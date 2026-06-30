@@ -76,5 +76,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initLightbox('home-lightbox', '.home-about-photo-grid .photo-item');
-  initLightbox('about-lightbox', '.intro-split .photo-item');
+  initLightbox('about-lightbox', '.intro-split .photo-item, .area-section .photo-item');
 });

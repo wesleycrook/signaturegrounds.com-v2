@@ -109,10 +109,9 @@
           <li><span class="area-dot" aria-hidden="true"></span>Appling, GA</li>
         </ul>
       </div>
-      <!-- Replace with a real embedded Google Map or map image -->
-      <div class="map-placeholder" aria-label="Service area map placeholder">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <p>Augusta, GA area map</p>
+      <div class="photo-item" role="button" tabindex="0" aria-label="View service area map" data-large="images/about/google-map-lg.jpg">
+        <img src="images/about/google-map-sm.jpg" alt="Signature Grounds service area map — Augusta, GA region">
+        <div class="photo-overlay"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
     </section>
     
@@ -200,7 +199,7 @@
   <div class="lightbox" id="about-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <div class="lightbox-inner">
       <button class="lightbox-close" id="about-lightbox-close" aria-label="Close photo viewer">×</button>
-      <img src="" alt="" id="about-lightbox-img" style="width:100%;border-radius:4px;display:block;">
+      <img src="" alt="" id="about-lightbox-img" style="width:auto;max-width:100%;max-height:85vh;height:auto;border-radius:4px;display:block;margin:0 auto;">
     </div>
   </div>
 
