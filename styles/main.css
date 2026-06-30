@@ -1372,6 +1372,37 @@ a.contact-item:hover .contact-item-text strong { color: var(--bark); }
   stroke-width: 1.5; opacity: 0.5;
   stroke-linecap: round; stroke-linejoin: round;
 }
+.service-photos .photo-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.service-photos .photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.service-photos .photo-item .photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 26, 10, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.service-photos .photo-item:hover .photo-overlay,
+.service-photos .photo-item:focus .photo-overlay {
+  opacity: 1;
+}
+.service-photos .photo-item .photo-overlay svg {
+  width: 30px; height: 30px;
+  stroke: var(--warm-white); fill: none;
+  stroke-width: 1.5; opacity: 0.9;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 
 
 /* ════════════════════════════════════════
