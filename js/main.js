@@ -80,5 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // About Page
   initLightbox('about-lightbox', '.intro-split .photo-item, .area-section .photo-item');
   // Services Page
-  initLightbox('services-lightbox', '#lawn-maintenance .photo-item, #landscape-design .photo-item, #irrigation .photo-item, #drainage .photo-item');
+  initLightbox('services-lightbox', '#lawn-maintenance .photo-item, #landscape-design .photo-item, #irrigation .photo-item, #drainage .photo-item, #lighting .photo-item, #retaining-walls .photo-item, #excavation .photo-item');
 });
