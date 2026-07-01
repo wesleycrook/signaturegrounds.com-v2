@@ -75,7 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Home Page
   initLightbox('home-lightbox', '.home-about-photo-grid .photo-item');
+  // About Page
   initLightbox('about-lightbox', '.intro-split .photo-item, .area-section .photo-item');
-  initLightbox('services-lightbox', '#lawn-maintenance .photo-item');
+  // Services Page
+  initLightbox('services-lightbox', '#lawn-maintenance .photo-item, #landscape-design .photo-item, #irrigation .photo-item, #drainage .photo-item');
 });
